@@ -1,32 +1,14 @@
-# Prerequisites
-*.d
+#ignore build directory
+/build
 
-# Compiled Object files
-*.slo
-*.lo
-*.o
-*.obj
+#ignore vscode directory
+/.vscode
 
-# Precompiled Headers
-*.gch
-*.pch
+#ignore Results directory
+/Temp_Results
 
-# Compiled Dynamic libraries
-*.so
-*.dylib
-*.dll
+#ignore Testing Data directory
+/Temp_Test_Data
 
-# Fortran module files
-*.mod
-*.smod
-
-# Compiled Static libraries
-*.lai
-*.la
-*.a
-*.lib
-
-# Executables
-*.exe
-*.out
-*.app
+#ignore comparision directory
+/Cmp_Test_Data

@@ -1,0 +1,61 @@
+# ws3 testing
+image: gcc
+
+stages:
+  - build
+  - Generate_Data
+  - test
+
+build-linux:
+  stage: build
+  
+  script:
+  - mkdir build
+  - cd build
+  - cmake ..
+  - make
+  artifacts:
+    paths:
+      - build/*
+  tags:
+    - CFD_Proj
+
+Run-Solver:
+  stage: Generate_Data
+  script:
+  - cd build
+  - ./sim -c -d
+  tags:
+  - CFD_Proj
+
+
+init_parallel-test:
+  stage: test
+  tags:
+  - CFD_Proj
+
+  script:
+    - cd build/tests/
+    - mpirun -np 2 ./unit_tests_ws3   [init_parallel]
+
+uv_comm-test:
+  stage: test
+  tags:
+  - CFD_Proj
+
+  script:
+    - cd build/tests/
+    - mpirun -np 2 ./unit_tests_ws3   [uv_comm]    
+
+pressure_comm-test:
+  stage: test
+  tags:
+  - CFD_Proj
+
+  script:
+    - cd build/tests/
+    - mpirun -np 2 ./unit_tests_ws3   [pressure_comm]   
+
+
+
+  

@@ -1,0 +1,113 @@
+Our work will be divided into Milestones, each milestone will contain features, each feature contains tasks(possibly one commit per task).
+The milestone could be trivial and does not have features.
+Workflow: branching from master to Milestone branch and from the milestone branch features are branched, one or more developers can work on same
+          feature. once feature is done a merge request to the milestone branch is created.
+          After all features are done, a merge request is created to the master branch.
+          A possibilty but not safe to work on Milestones in parallel(just idea but not to try it now)
+Naming Scheme: Milestones : Milestone #
+               Features : Feature-M#_summary-Feature number 
+               (e.g Milestone 2, feature 1 adding flags to cell, so name of branch is feature-M2_adding_flags-f1) 
+------------------------------- Milestone 1 -------------------------------
+// Description: adjust basic framework(utilities,Folders structure) with running lid driven cavity WS1
+-- each task represent a commit
+Tasks:
+1-Add Tasks.txt , gitignore and git commands guide(Done)
+2-Add utilities File with parse command method and adjust cmake file to build using utilities(Done)
+3-Add clear output dir to utlities file(Done)
+4-Add Result Folder(Done)
+5-Adjust main to parse command file,clear output dir,strings to hold file name(Done)
+6-adjust prinitng vtk file to use new method of vtk class(Done)
+7-delete 2d arrays allocation and added methods to grid class(Done)
+8-adjust printing in main using problemName variable(Done)
+9-print supported methods to solve(Done)
+10-adjust intermediate printing of vtk files(Done)
+11-Add results of worksheet 1 to readme file instead of google documents,screenshots can be extreacted from final resutls dir
+
+Commit SHA b52caaa86f0c7833737d779c16f0d702bad15d00
+
+------------------------------- Milestone 2 -------------------------------
+// Description: adjust worksheet 1 to work with geometry files
+-- each task represent a commit
+*Feature 1 add dat and pgm files Folders
+    1-make Simdata and debug data dir and add .dat and pgm files to it
+    2-adjust sim dir path in utilities
+    3-add debug flag to command line flags
+*Feature 2 adjust read parameters to read geometry
+    1-adjust read pgm to receive std::string instead of char*
+    2-adjust read parameters to read pgm files
+    3-adjust main to pass geometry array and call new read parameter function
+    4-adjust read_regex
+*Feature 3 add flags to cells and assign them to grid
+    1-Add int flag attribute to cell with setters and getters
+    2-Add geometry 2d array as input to grid and assign flag to cells
+
+
+------------------------------- Milestone 3 -------------------------------
+// Description: implement unit tests using catch for worksheets
+--each task represent a commit
+*Feature 1 implement test case for read pgm
+    1-Test case compare parameters read by method
+*Feature 2 implement test case for grid
+    1-Test case for grid size and border size
+    2-Test case for intial values of UI
+    3-Test case for intial values of VI
+    4-Test case for intial values of PI
+    5-Test case for border flag
+*Feature 3 implement saving matrices in log file as reference
+    1-mkdir testing data if it does not exist(Done)
+    2-open log file(text file) for each matrix
+    3-save matrices at 2 different time step in 2 different log file
+    4-read log files using read matrix in helper.cpp
+    5-make test case for read matrix from log file
+*Feature 4 implement test case for boundary values
+    1-Test case to check Vertical wall
+    2-Test case to check bottom wall
+    3-Test case to check top wall
+*Feature 5 implement test case for calculate dt
+    1-Test case with small grid with inilial value zero
+    2-Test case with small grid with initial value greater than zero
+    2-Test case with small grid with initial value greater less zero
+*Feature 6 implement test case for calculate F and G
+    1-Test case with small grid for F calculation for initial value zero
+    2-Test case with small grid for G calculation for initial value zero
+    3-Test case with small grid for F calculation for initial value greater zero
+    4-Test case with small grid for G calculation for initial value greater zero
+    5-Test case with small grid for F calculation for initial value less zero
+    6-Test case with small grid for G calculation for initial value less zero
+    7-Test case with small grid for F calculation for mixed(+ve and -ve) initial value 
+    8-Test case with small grid for G calculation for mixed(+ve and -ve) initial value
+*Feature 7 implement test case for calculate RS
+    1-Test case with small matrices for F with +ve value and G with zero value
+    2-Test case with small matrices for F with zero value and G with +ve value
+    3-Test case with small matrices for F with +ve value and G with +ve value
+    4-Test case with small matrices for F with -ve value and G with zero value
+    5-Test case with small matrices for F with zero value and G with -ve value
+    6-Test case with small matrices for F with -ve value and G with -ve value
+    7-Test case with small matrices for F with -ve value and G with +ve value
+    8-Test case with small matrices for F with +ve value and G with -ve value
+*Feature 8 Define dummy grid explicitly
+    1-Define dummy grid in Test case grid without reading parameters(Done)
+    2-Define dummy grid in Test case F&G without reading parameters(Done)
+    3-Define dummy grid in Test case RHS without reading parameters(Done)
+    4-Define dummy grid in Test case SOR without reading parameters(Done)
+    5-Define dummy grid in Test case U&V without reading parameters(Done)
+*Feature 9 Make test dt in one test case
+    1-Merge 3 test cases of calculate dt in one test case(Done)
+*Feature 10 Merge read and write matrix in one function
+    1-Merge read matrix in one function and make takes as argument precision
+    2-Merge write matrix in one function and make takes as argument precision
+*Feature check catch to make only one test per time
+    1-check for annotation to test only one Test case at a time 
+    (AMR) >>>>>> Can be done by passing the tag or the name of the test case (resolved)
+*Feature 11 make release and debug mode
+    1-adjust main method for building debug code if flag is set
+    2-adjust cmake to accept flag
+*Feature 12 C++ consistency
+    1-make code consistent to c++ do not use printf or 
+      File stream unless it exists in old method from skeleton
+*Feature 13 Adjust Folder structure
+    1-Add hpp file to hold directories for tests
+    2-Adjust dir path in utilities.hpp
+    3-Adjust dir path in unit test
+    4-Adjust git ignore File
+    
